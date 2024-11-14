@@ -4,16 +4,31 @@
 
 // // Limit the data to be rendered on the page to be 5 users.
 
-import { useEffect } from "react"
+import { useEffect, useState } from "react";
 
 const GitHubProfile = () => {
+  const [users, setUsers] = useState([]);
   useEffect(() => {
-    
-  })
-  return (
-    
-  
-  )
-}
+    fetch("https://api.github.com/users")
+      .then((response) => response.json())
+      .then((data) => setUsers(data));
+  }, []);
 
-export default GitHubProfile
+  return (
+    <div className="profile-container">
+      <h1>GitHub Profiles</h1>
+      <ul className="profiles">
+        {users.slice(0, 5).map((user) => (
+          <li key={user.id} className="profile-card">
+            <img src={user.avatar_url} alt={user.login} />
+            <p>{user.login}</p>
+            <p>{user.followers_url}</p>
+            <p>{user.html_url}</p>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export default GitHubProfile;
