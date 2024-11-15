@@ -109,4 +109,70 @@ button {
 
 }
 
-.profile-container
+.profile-container{
+  text-align: center;
+  /* flex-wrap: wrap; */
+}
+
+.profiles{
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+  list-style-type:none ;
+  
+  
+  
+}
+
+i{
+  display: flex;
+}
+
+.profile-card{
+  
+  width: 20%;
+  padding: 20px;
+  border: 1px solid #ddd;
+  transition: all 0.3s ease;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(195, 25, 25, 0);
+  text-align: center;
+  /* margin: 20px; */
+  
+  
+}
+
+.profile-card:hover{
+  box-shadow: 0 0 10px rgb(4, 22, 93);
+  transform: translateY(-20px);
+}
+
+.username{
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 8px 0
+}
+
+.avatar {
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 1rem;
+}
+
+.followers, .github-link {
+  display: inline-block;
+  margin: 5px;
+}
+
+.fa-users, .fa-github {
+  font-size: 24px; /* Adjust the size as needed */
+  color: #007bff; /* Change color as needed */
+  transition: color 0.3s;
+  padding: 1px
+}
+
+.fa-users:hover, .fa-github:hover {
+  color: #0056b3; /* Change color on hover */
+  border-bottom: 2px solid blue;
+}

@@ -20,10 +20,25 @@ const GitHubProfile = () => {
       <ul className="profiles">
         {users.slice(0, 5).map((user) => (
           <li key={user.id} className="profile-card">
-            <img src={user.avatar_url} alt={user.login} />
-            <p>{user.login}</p>
-            <p>{user.followers_url}</p>
-            <p>{user.html_url}</p>
+            <img src={user.avatar_url} alt={user.login} className="avatar" />
+            <p className="username">{user.login.toUpperCase()}</p>
+            <p className="followers">
+              <a
+                href={user.followers_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i className="fas fa-users" title="View Followers"></i>
+              </a>
+            </p>
+            <a
+              href={user.html_url}
+              className="github-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <i className="fab fa-github" title="View GitHub Profile"></i>
+            </a>
           </li>
         ))}
       </ul>
