@@ -8,6 +8,7 @@ import { useEffect, useState } from "react";
 
 const GitHubProfile = () => {
   const [users, setUsers] = useState([]);
+
   useEffect(() => {
     fetch("https://api.github.com/users")
       .then((response) => response.json())

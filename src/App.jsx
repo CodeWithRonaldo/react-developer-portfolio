@@ -6,7 +6,6 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import { ThemeProvider } from "./context/ThemeContext";
 import Footer from "./components/Footer";
-import GitHubProfile from "./components/GitHubProfile";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 function App() {
   return (
@@ -18,9 +17,7 @@ function App() {
             <Route path="/" exact element={<Home />} />
             <Route path="about" element={<About />} />
           </Routes>
-          <GitHubProfile />
-
-          <Footer />
+           <Footer />
         </BrowserRouter>
       </ThemeProvider>
     </>
