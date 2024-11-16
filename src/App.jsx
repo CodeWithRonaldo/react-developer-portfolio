@@ -4,13 +4,13 @@ import Home from "./components/Home";
 import About from "./components/About";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import NavBar from "./components/NavBar";
-import { ThemeProvider } from "./context/ThemeContext";
+import ThemeContext from "./context/ThemeContext";
 import Footer from "./components/Footer";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 function App() {
   return (
     <>
-      <ThemeProvider>
+      <ThemeContext>
         <BrowserRouter>
           <NavBar />
           <Routes>
@@ -19,7 +19,7 @@ function App() {
           </Routes>
            <Footer />
         </BrowserRouter>
-      </ThemeProvider>
+      </ThemeContext>
     </>
   );
 }
