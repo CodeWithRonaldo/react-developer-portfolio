@@ -2,9 +2,12 @@ import { NavLink } from "react-router-dom";
 import { useContext } from "react";
 import { ThemeContext } from "../context/ThemeContext";
 import logo from "../assets/preview1.png";
+import { useTheme } from "../context/ThemeContext";
+
 
 function NavBar() {
-  const { toggleTheme, theme } = useContext(ThemeContext);
+  const { toggleTheme, theme } = useTheme();
+
 
   return (
     <div className="nav-container">
@@ -19,6 +22,7 @@ function NavBar() {
           About
         </NavLink>
         <button onClick={toggleTheme}>Toggle Theme</button>
+        <p>Mode: {theme}</p>
       </nav>
     </div>
   );
