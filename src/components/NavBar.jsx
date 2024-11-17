@@ -7,11 +7,10 @@ import { FaSun } from "react-icons/fa";
 function NavBar() {
   const { toggleTheme, theme } = useTheme();
 
-
   return (
     <div className="nav-container">
       <div className="logo">
-        <img src={logo} alt="logo" />
+        <h1>Ronnie</h1>
       </div>
       <nav className="nav-items">
         <NavLink to="/" className="nav-link">
@@ -20,8 +19,14 @@ function NavBar() {
         <NavLink to="/about" className="nav-link">
           About
         </NavLink>
-        <button onClick={toggleTheme}>{theme === "light" ? <FaMoon className="moon"/> : <FaSun className="sun" />}</button>
-        {/* <p>Mode: {theme}</p> */}
+        <button onClick={toggleTheme} className="theme-mode">
+          {theme === "light" ? (
+            <FaMoon className="moon" />
+          ) : (
+            <FaSun className="sun" />
+          )}
+        </button>
+       
       </nav>
     </div>
   );
