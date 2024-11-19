@@ -17,7 +17,7 @@ function App() {
             <Route path="/" exact element={<Home />} />
             <Route path="about" element={<About />} />
           </Routes>
-           <Footer />
+          <Footer />
         </BrowserRouter>
       </ThemeContext>
     </>

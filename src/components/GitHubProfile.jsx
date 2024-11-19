@@ -1,26 +1,56 @@
-// In GitHubProfile.jsx, create a component that uses useEffect to fetch GitHub user data from the GitHub API.
-
-// // Use useState to store the fetched data from the API, including properties like avatar_url, login, followers_url, and html_url.
-
-// // Limit the data to be rendered on the page to be 5 users.
-
-import { AOS } from "aos";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const GitHubProfile = () => {
- 
   const [users, setUsers] = useState([]);
-
+  const searchRef = useRef();
+  const [filteredData, setFilteredData] = useState([]);
 
   useEffect(() => {
-    fetch("https://api.github.com/users")
-      .then((response) => response.json())
-      .then((data) => setUsers(data));
+    const fetchData = async () => {
+      await fetch("https://api.github.com/users", { mode: "cors" })
+        .then((response) => {
+          if (response.status === 403) {
+            setUsers(data);
+            setFilteredData(data);
+            throw new Error("api not working");
+          }
+
+          console.log(response.status);
+          return response.json();
+        })
+        .then((data) => {
+          setUsers(data);
+          setFilteredData(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    };
+    fetchData();
   }, []);
+
+  const handleSearch = () => {
+    const searchValue = searchRef.current.value.toLowerCase();
+    const filtered = users.filter((item) =>
+      item.login.toLowerCase().includes(searchValue)
+    );
+    if (searchValue !== "") {
+      setUsers(filtered);
+    } else {
+      setUsers(filteredData);
+    }
+  };
 
   return (
     <div className="profile-container">
       <h1>GitHub Profiles</h1>
+      <input
+        type="search"
+        placeholder="Search by name"
+        className="search"
+        ref={searchRef}
+        onChange={handleSearch}
+      />
       <ul className="profiles">
         {users.slice(0, 5).map((user) => (
           <li key={user.id} className="profile-card">
@@ -33,11 +63,7 @@ const GitHubProfile = () => {
               rel="noopener noreferrer"
               className="followers"
             >
-              <i
-                className="fas fa-users"
-                title="View Followers"
-                
-              ></i>
+              <i className="fas fa-users" title="View Followers"></i>
             </a>
 
             <a
