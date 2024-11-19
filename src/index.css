@@ -13,6 +13,11 @@ body.dark .nav-link {
   color: #fff;
 }
 
+body.dark .search {
+  color: white;
+  border: 1px solid white;
+}
+
 body.dark i {
   color: #fff;
 }
@@ -148,4 +153,11 @@ body.dark h1 {
 .sun {
   color: white;
   border: none;
+}
+
+.search {
+  background: transparent;
+  padding: 5px;
+  outline: none;
+  border: 1px solid black;
 }
