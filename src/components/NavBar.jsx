@@ -1,5 +1,4 @@
 import { NavLink } from "react-router-dom";
-import logo from "../assets/preview1.png";
 import { useTheme } from "../context/ThemeContext";
 import { FaMoon } from "react-icons/fa";
 import { FaSun } from "react-icons/fa";
@@ -26,7 +25,6 @@ function NavBar() {
             <FaSun className="sun" />
           )}
         </button>
-       
       </nav>
     </div>
   );
